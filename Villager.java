@@ -24,6 +24,7 @@ public class Villager
    //3-arg Constructor
    //@param name Villager's name
    //@param single true if Villager is single (and the wanted sex)
+   //@param birthday Villager's birthday ([season] [day])
    //------------------------------------------------
    public Villager(String name, boolean single, String birthday)
    {
@@ -33,6 +34,14 @@ public class Villager
       this.dislike = new ArrayList<String>(0);
       this.birthday = birthday;
       this.single = single;
+   }
+   //------------------------------------------------
+   //1-arg Constructor
+   //@param name Villager's name
+   //------------------------------------------------
+   public Villager(String name)
+   {
+       this(name, false, "Not Known");
    }
    public String getBirthday()
    {
