@@ -1,0 +1,42 @@
+Abigail love like Quartz Pumpkin Jade Tulip BlueJazz dislike SeaUrchin Bread true Fall 13
+Alex love like RainbowShell dislike Quartz Plum false Summer 13
+Caroline love like Crocus dislike Bread false Winter 7
+Clint love Emerald like dislike Quartz SolarEssence NautilusShell false Winter 26
+Demetrius love like dislike Quartz BugMeat Plum Crayfish CaveCarrot RedMushroom false Summer 19
+Dwarf love Amethyst like Quartz dislike false Summer 22
+Elliott love like Coral Clam dislike SeaUrchin NautilusShell Amaranth Salmonberry false Fall 5
+Emily love like FireQuartz dislike false Not Known
+Evelyn love ChocolateCake like SweetPea Crocus Daffodil dislike Garlic Blackberry Holly false Winter 20
+George love Leek like dislike false Fall 24
+Gus love like dislike Quartz false Summer 8
+Haley love like SweetPea dislike Quartz Blackberry true Not Known
+Harvey love like Blackberry dislike false Winter 14
+Jas love ChocolateCake like BlueJazz dislike Coral Snail Blackberry Crayfish false Summer 4
+Jodi love like dislike Bread JojaCola false Fall 11
+Kent love like Aquamarine dislike false Spring 4
+Krobus love Diamond like dislike false Not Known
+Leah love Salad like Daffodil CommonMushroom Hazelnut WinterRoot Tulip dislike SmallmouthBass Coral RainbowTrout Amethyst true Winter 23
+Lewis love like Blueberry Radish dislike Grape Blackberry Plum Bread Salmonberry false Not Known
+Linus love like Leek WildHorseradish Grape SpiceBerry Hazelnut CommonMushroom Blackberry SnowYam WinterRoot dislike Bullhead Bread FrozenTear false Winter 3
+Marnie love like BlueJazz dislike 1 false Fall 18
+Maru love like Quartz Amethyst Aquamarine dislike Daffodil Coral Blackberry Blackberry Daffodil true Summer 10
+Pam love Beer Parsnip like Daffodil Blackberry dislike Squid Coral false Not Known
+Penny love Diamond like Cookie Amethyst ChocolateCake Mayonnaise Crocus Aquamarine BlueJazz dislike Coral Blackberry Quartz Orpiment CrystalFruit Holly true Fall 2
+Pierre love FriedCalamari like dislike Quartz false Not Known
+Robin love like Quartz SweetPea Blackberry Jade Crocus Aquamarine Ruby dislike JojaCola false Fall 21
+Sam love like JojaCola dislike false Summer 19
+Sandy love like dislike false Not Known
+Sebastian love like Topaz dislike Bait Mayonnaise false Winter 10
+Shane love Pizza like dislike false Not Known
+Vincent love Grape ChocolateCake CranberryCandy like dislike Coral Snail Blackberry Spiceberry false Not Known
+Willy love like Sunfish RainbowShell RainbowTrout Coffee dislike Crayfish Perch RedMushroom Shrimp false Summer 24
+Wizard love Jagoite VoidEssence like dislike IridiumOre false Winter 17
+Fish, Squid are in the ocean at night
+Lewis doesn't like fish
+Lingcod fish caught all day in fresh water in Winter
+Crimsonfish in ocean in summer on east side
+Glacierfish off southern tip of cindersap island in winter where river meets ocean
+Anglerfish where river meets mountain in fall
+Twisted fish in sewer
+Legend fish lives in log submerged in mountain lake, appears on rainy spring days
+Eel caught in ocean in spring/fall on rainy evening, fish
