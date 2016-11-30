@@ -7,7 +7,7 @@
 package stardewvalley;
 
 /**
- * @author Bradley
+ * @author Bradley Dufour
  * @date 2016-04-20
  */
 //Villager class for games with villagers who like to receive certain gifts
@@ -43,30 +43,76 @@ public class Villager
    {
        this(name, false, "Not Known");
    }
+   
+   /**
+    * getBirthday - Returns String birthday of Villager
+    * @accessor
+    * 
+    * @return Villager's birthday
+    */
    public String getBirthday()
    {
       return birthday;
    }
+   
+   /**
+    * isSingle - Returns Villager's boolean single value
+    * @accessor
+    * 
+    * @return Villager's single status
+    */
    public boolean isSingle()
    {
       return single;
    }
+   
+   /**
+    * getName - Returns Villager's name as a String
+    * @accessor
+    * 
+    * @return Villager's name
+    */
    public String getName()
    {
       return name;
    }
+   
+   /**
+    * getLove - Returns an ArrayList<String> containing all of Villager's known
+    * loved items
+    * @accessor
+    * 
+    * @return Villager's love ArrayList
+    */
    public ArrayList<String> getLove()
    {
       return love;
    }
+   
+   /**
+    * getLike - Returns an ArrayList<String> containing all of Villager's known
+    * liked items
+    * @accessor
+    * 
+    * @return Villager's like ArrayList
+    */
    public ArrayList<String> getLike()
    {
       return like;
    }
+   
+   /**
+    * getDislike - Returns an ArrayList<String> containing all of Villager's known
+    * disliked items
+    * @accessor
+    * 
+    * @return Villager's dislike ArrayList
+    */
    public ArrayList<String> getDislike()
    {
       return dislike;
    }
+   
    //------------------------------------------------
    //setBirthday
    //@param String
@@ -75,6 +121,7 @@ public class Villager
    {
       birthday = date;
    }
+   
    //------------------------------------------------
    //addLove
    //@param Name of new gift the Villager loves receiving
@@ -91,6 +138,7 @@ public class Villager
    {
       like.add(gift);
    }
+   
    //------------------------------------------------
    //addDislike
    //@param Name of new gift the Villager dislikes receiving

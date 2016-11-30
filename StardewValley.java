@@ -6,7 +6,7 @@
 package stardewvalley;
 
 /**
- * @author Bradley
+ * @author Bradley Dufour
  * @date 2016-04-20
  */
 import java.io.*;
@@ -19,7 +19,15 @@ public class StardewValley {
     private static ArrayList<String> miscInfo = new ArrayList<String>();
     private static Scanner scan = new Scanner(System.in);
 
-    public static int findPerson(String name, ArrayList<Villager> charList) {
+    /**
+    * findPerson - Looks for a person in the ArrayList of Villagers who matches
+    * the given name
+    * @helper
+    * 
+    * @param name Name of Villager to look for
+    * @param charList ArrayList of Villagers to search in
+    */
+    private static int findPerson(String name, ArrayList<Villager> charList) {
         for (int i = 0; i < charList.size(); i++) {
             if (charList.get(i).getName().equalsIgnoreCase(name)) {
                 return i;
@@ -28,7 +36,14 @@ public class StardewValley {
         return (-1);
     }
 
-    public static void doAThing(ArrayList<Villager> charList, int choice) {
+    /**
+    * doAThing - Based off the user's response to the printed menu, responds and
+    * creates changes appropriately
+    * 
+    * @param charList List of Villagers the method will create changes to
+    * @param choice Choice the user made based on printMenu()
+    */
+    private static void doAThing(ArrayList<Villager> charList, int choice) {
         switch (choice) {
             //Add a 'loved' gift?
             case 1:
@@ -350,7 +365,11 @@ public class StardewValley {
         return false; //This should never be reached
     }
 
-    public static void printMenu() {
+    /**
+    * printMenu - Prints the menu of options to the screen
+    * @helper
+    */
+    private static void printMenu() {
         System.out.println("Would you like to:");
         System.out.println("1) Add a 'loved' gift?");
         System.out.println("2) Add a 'liked' gift?");
@@ -365,33 +384,54 @@ public class StardewValley {
         System.out.println("11) Save and quit?");
     }
 
-    public static void updateCharList(String info, ArrayList<Villager> charList, int charNum) {
+    /**
+    * updateCharList - Creates a Villager and adds that to the list based on the
+    * provided line of information
+    * @helper
+    * 
+    * @param info Information for creating the Villager
+    * @param charList List of Villagers to which the new Villager will be added
+    */
+    private static void updateCharList(String info, ArrayList<Villager> charList) {
         String[] charInfo = info.split(" ");
+        //Finds birthday String
         String birthday = charInfo[charInfo.length - 2] + " " + charInfo[charInfo.length - 1];
+        //Finds name String
         String name = charInfo[1];
         boolean single = false;
+        //Finds 'single' boolean
         if (charInfo[charInfo.length - 3].equals("true")) {
             single = true;
         }
         Villager villager = new Villager(name, single, birthday);
         int position = 3;
+        //Fills in the Villager's loved items
         while (!charInfo[position].equals("like")) {
             villager.addLove(charInfo[position]);
             position++;
         }
         position++;
+        //Fills in the Villager's liked items
         while (!charInfo[position].equals("dislike")) {
             villager.addLike(charInfo[position]);
             position++;
         }
         position++;
+        //Fills in the Villager's disliked items
         for (position = position; position < charInfo.length - 3; position++) {
             villager.addDislike(charInfo[position]);
         }
+        
         charList.add(villager);
     }
 
-    public static void writeToFile(ArrayList<Villager> charList) {
+    /**
+    * writeToFile - Writes all of the held information to the database text file
+    * 
+    * @param charList List of all the characters with information to write to the
+    *        file
+    */
+    private static void writeToFile(ArrayList<Villager> charList) {
         try {
             FileWriter write = new FileWriter(FILENAME);
             BufferedWriter writer = new BufferedWriter(write);
@@ -434,7 +474,7 @@ public class StardewValley {
         int counter = 0;
         while (nextLine.startsWith("Character") && fileScan.hasNextLine()) {
             counter++;
-            updateCharList(nextLine, charList, 1);
+            updateCharList(nextLine, charList);
             if(fileScan.hasNextLine())
                 nextLine = fileScan.nextLine();
         }
