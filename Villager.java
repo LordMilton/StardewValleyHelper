@@ -14,7 +14,8 @@ package stardewvalley;
 import java.util.ArrayList;
 public class Villager
 {
-   private String name;
+   private String name; //The constructor will always capitalize the first char
+                        //of this for sorting purposes
    private ArrayList<String> love;
    private ArrayList<String> like;
    private ArrayList<String> dislike;
@@ -28,7 +29,7 @@ public class Villager
    //------------------------------------------------
    public Villager(String name, boolean single, String birthday)
    {
-      this.name = name;
+      this.name = capitalizeName(name);
       this.love = new ArrayList<String>(0);
       this.like = new ArrayList<String>(0);
       this.dislike = new ArrayList<String>(0);
@@ -42,6 +43,19 @@ public class Villager
    public Villager(String name)
    {
        this(name, false, "Not Known");
+   }
+   
+   /**
+    * capitalizeName - Capitalizes the first letter of a String
+    * @helper
+    * 
+    * @param name String to be capitalized
+    * @return Capitalized version of the given String
+    */
+   private String capitalizeName(String name)
+   {
+       String capitalized = name.substring(0,1).toUpperCase() + name.substring(1,name.length());
+       return capitalized;
    }
    
    /**

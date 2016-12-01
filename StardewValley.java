@@ -65,17 +65,17 @@ public class StardewValley {
     */
     static void mergeLists(ArrayList<Villager> charList, int left, int right) {
         int endOfLeftHalf = (left + right) / 2;
-        ArrayList<Villager> temp = new ArrayList<Villager>(right-left+1);
+        Villager[] temp = new Villager[right-left+1];
         int el = left;
         int arr = endOfLeftHalf + 1;
         int i = 0;
         while (el <= endOfLeftHalf  &&  arr <= right) {
             if (charList.get(el).getName().compareTo(charList.get(arr).getName()) < 0) {
-                temp.set(i, charList.get(el));
+                temp[i] = charList.get(el);
                 el++;
                 i++;
             } else {
-                temp.set(i, charList.get(arr));
+                temp[i] = charList.get(arr);
                 arr++;
                 i++;
             }
@@ -85,14 +85,14 @@ public class StardewValley {
         if (el > endOfLeftHalf) {
             //Left side ended first
             while (arr <= right) {
-                temp.set(i, charList.get(arr));
+                temp[i] = charList.get(arr);
                 arr++;
                 i++;
             }
         } else {
             //Right side ended first
             while (el <= endOfLeftHalf) {
-                temp.set(i, charList.get(el));
+                temp[i] = charList.get(el);
                 el++;
                 i++;
             }
@@ -100,7 +100,7 @@ public class StardewValley {
 
         // Fill correct parts of charList with temp's info
         for (int k=0; k<right-left+1; k++) {
-            charList.set(left+k, temp.get(k));
+            charList.set(left+k, temp[k]);
         }
     }
     //************************
@@ -438,6 +438,7 @@ public class StardewValley {
         do {
             if (response == 'y') {
                 charList.add(new Villager(name));
+                sortCharList(charList);
                 return true;
             }
             if (response == 'n') {
