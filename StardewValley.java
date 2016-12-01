@@ -18,11 +18,98 @@ public class StardewValley {
     private static int numCharacters; //This will be calculated later on
     private static ArrayList<String> miscInfo = new ArrayList<String>();
     private static Scanner scan = new Scanner(System.in);
+    
+    //All part of the sortCharList mergeSort
+    //************************
+    /**
+    * sortCharList - Calls a mergeSort function
+    * @helper
+    * 
+    * @param charList ArrayList of Villagers to sort
+    */
+    static void sortCharList(ArrayList<Villager> charList) {
+        mergeSort(charList, 0, charList.size()-1);
+    }
 
+    /**
+    * mergeSort - Sorts a list of Villagers in alphabetical order based on
+    * their names.
+    * @helper
+    * @sort
+    * @recursive
+    * 
+    * @param charList ArrayList of Villagers to sort
+    * @param left Left side of section to sort
+    * @param right Right side of section to sort
+    */
+    static void mergeSort(ArrayList<Villager> charList, int left, int right) {
+        if (left == right) {
+            return;
+        }
+        int endOfLeftHalf = (left + right) / 2;
+        mergeSort(charList, left, endOfLeftHalf);
+        mergeSort(charList, endOfLeftHalf+1, right);
+        mergeLists(charList, left, right);
+    }
+
+    /**
+    * mergeLists - Given a range of elements in an ArrayList with two sorted halves,
+    * merge the two halves and fill in the given array with the newly sorted
+    * information.
+    * @helper
+    * @sort
+    * 
+    * @param charList ArrayList of Villagers to sort
+    * @param left Left side of section to sort
+    * @param right Right side of section to sort
+    */
+    static void mergeLists(ArrayList<Villager> charList, int left, int right) {
+        int endOfLeftHalf = (left + right) / 2;
+        Villager[] temp = new Villager[right-left+1];
+        int el = left;
+        int arr = endOfLeftHalf + 1;
+        int i = 0;
+        while (el <= endOfLeftHalf  &&  arr <= right) {
+            if (charList.get(el).getName().compareTo(charList.get(arr).getName()) < 0) {
+                temp[i] = charList.get(el);
+                el++;
+                i++;
+            } else {
+                temp[i] = charList.get(arr);
+                arr++;
+                i++;
+            }
+        }
+
+        // One of the two halves is done.
+        if (el > endOfLeftHalf) {
+            //Left side ended first
+            while (arr <= right) {
+                temp[i] = charList.get(arr);
+                arr++;
+                i++;
+            }
+        } else {
+            //Right side ended first
+            while (el <= endOfLeftHalf) {
+                temp[i] = charList.get(el);
+                el++;
+                i++;
+            }
+        }
+
+        // Fill correct parts of charList with temp's info
+        for (int k=0; k<right-left+1; k++) {
+            charList.set(left+k, temp[k]);
+        }
+    }
+    //************************
+    
     /**
     * findPerson - Looks for a person in the ArrayList of Villagers who matches
     * the given name
     * @helper
+    * @search
     * 
     * @param name Name of Villager to look for
     * @param charList ArrayList of Villagers to search in
@@ -351,6 +438,7 @@ public class StardewValley {
         do {
             if (response == 'y') {
                 charList.add(new Villager(name));
+                sortCharList(charList);
                 return true;
             }
             if (response == 'n') {
