@@ -282,6 +282,8 @@ public class StardewValley {
                     if (personNum == -1) {
                         correctPerson = checkForNewCharacter(person, charList);
                     }
+                    else
+                        correctPerson = true;
                     if (correctPerson) {
                         personNum = findPerson(person, charList);
                     }
