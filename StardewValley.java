@@ -495,6 +495,8 @@ public class StardewValley {
             if (response == 'y') {
                 charList.add(new Villager(name));
                 sortCharList(charList);
+                System.out.println(name +" has been defined as not single and they're birthday is unknown.\n"+
+                                   "This can be changed after returning to the menu.");
                 return true;
             }
             if (response == 'n') {
