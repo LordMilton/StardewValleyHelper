@@ -224,9 +224,10 @@ public class StardewValley {
                 if (lovers.isEmpty()) {
                     System.out.println("No one appears to love " + gift + ".");
                 } else {
-                    for (Villager v : lovers) {
-                        System.out.print(v.getName() + ", ");
+                    for (int i = 0; i < lovers.size()-1; i++) {
+                        System.out.print(lovers.get(i).getName() +", ");
                     }
+                    System.out.print(lovers.get(lovers.size()-1) +" ");
                     System.out.print("love receiving " + gift + ".");
                     System.out.println();
                 }
@@ -243,9 +244,10 @@ public class StardewValley {
                 if (likers.isEmpty()) {
                     System.out.println("No one appears to like " + gift + ".");
                 } else {
-                    for (Villager v : likers) {
-                        System.out.print(v.getName() + ", ");
+                    for (int i = 0; i < likers.size()-1; i++) {
+                        System.out.print(likers.get(i).getName() +", ");
                     }
+                    System.out.print(likers.get(likers.size()-1) +" ");
                     System.out.print("like receiving " + gift + ".");
                     System.out.println();
                 }
@@ -262,9 +264,10 @@ public class StardewValley {
                 if (dislikers.isEmpty()) {
                     System.out.println("No one appears to dislike " + gift + ".");
                 } else {
-                    for (Villager v : dislikers) {
-                        System.out.print(v.getName() + ", ");
+                    for (int i = 0; i < dislikers.size()-1; i++) {
+                        System.out.print(dislikers.get(i).getName() +", ");
                     }
+                    System.out.print(dislikers.get(dislikers.size()-1) +" ");
                     System.out.print("dislike receiving " + gift + ".");
                     System.out.println();
                 }
@@ -291,10 +294,16 @@ public class StardewValley {
 
                 if (charList.get(personNum).getLove().isEmpty()) {
                     System.out.print(person + " seems to love nothing.");
-                } else {
-                    for (String g : charList.get(personNum).getLove()) {
-                        System.out.print(g + ", ");
+                } 
+                else if(charList.get(personNum).getLove().size() == 1)
+                {
+                    System.out.print(charList.get(personNum).getLove().get(0) +" is loved by "+ person);
+                }
+                else {
+                    for (int i = 0; i < charList.get(personNum).getLove().size()-1; i++) {
+                        System.out.print(charList.get(personNum).getLove().get(i) + ", ");
                     }
+                    System.out.print(charList.get(personNum).getLove().get(charList.get(personNum).getLove().size()-1) +" ");
                     System.out.print("are loved by " + person);
                 }
                 System.out.println();
@@ -302,10 +311,16 @@ public class StardewValley {
                 //Like
                 if (charList.get(personNum).getLike().isEmpty()) {
                     System.out.print(person + " seems to like nothing.");
-                } else {
-                    for (String g : charList.get(personNum).getLike()) {
-                        System.out.print(g + ", ");
+                } 
+                else if(charList.get(personNum).getLike().size() == 1)
+                {
+                    System.out.print(charList.get(personNum).getLike().get(0) +" is liked by "+ person);
+                }
+                else {
+                    for (int i = 0; i < charList.get(personNum).getLike().size()-1; i++) {
+                        System.out.print(charList.get(personNum).getLike().get(i) + ", ");
                     }
+                    System.out.print(charList.get(personNum).getLike().get(charList.get(personNum).getLike().size()-1) +" ");
                     System.out.print("are liked by " + person);
                 }
                 System.out.println();
@@ -313,10 +328,16 @@ public class StardewValley {
                 //Dislike
                 if (charList.get(personNum).getDislike().isEmpty()) {
                     System.out.print(person + " seems to dislike nothing.");
-                } else {
-                    for (String g : charList.get(personNum).getDislike()) {
-                        System.out.print(g + ", ");
+                } 
+                else if(charList.get(personNum).getDislike().size() == 1)
+                {
+                    System.out.print(charList.get(personNum).getDislike().get(0) +" is disliked by "+ person);
+                }
+                else {
+                    for (int i = 0; i < charList.get(personNum).getDislike().size()-1; i++) {
+                        System.out.print(charList.get(personNum).getDislike().get(i) + ", ");
                     }
+                    System.out.print(charList.get(personNum).getDislike().get(charList.get(personNum).getDislike().size()-1) +" ");
                     System.out.print("are disliked by " + person);
                 }
                 System.out.println();
@@ -350,18 +371,51 @@ public class StardewValley {
                 System.out.println("[Enter to move on]");
                 scan.nextLine();
                 break;
-            //Set a person's birthday?
+            //Set whether or not a character is single.
             case 7:
-                System.out.print("To whom does this apply? ");
-                person = scan.next(); scan.nextLine();
-
                 correctPerson = false;
                 do {
                     System.out.print("Whom does this apply to? ");
                     person = scan.next(); scan.nextLine();
 
                     personNum = findPerson(person, charList);
-                    System.out.println(personNum);
+                    if (personNum == -1) {
+                        correctPerson = checkForNewCharacter(person, charList);
+                    } else {
+                        correctPerson = true;
+                    }
+
+                    if (correctPerson) {
+                        personNum = findPerson(person, charList);
+                    }
+                } while (!correctPerson);
+                
+                char answer;
+                boolean doneOnce = false;
+                do{
+                    if(doneOnce)
+                        System.out.println("Answer must be '(Y)es' or '(N)o'");
+                    System.out.println("Is this character single? [y/n]");
+                    answer = scan.next().charAt(0);
+                    doneOnce = true;
+                }while(answer != 'y' && answer != 'n' && answer != 'Y' && answer != 'N');
+                boolean singleness;
+                if(answer == 'y' || answer == 'Y')
+                    singleness = true;
+                else //if answer was 'no'
+                    singleness = false;
+                    
+                charList.get(personNum).setSingleness(singleness);
+                break;
+                
+            //Set a person's birthday?
+            case 8:
+                correctPerson = false;
+                do {
+                    System.out.print("Whom does this apply to? ");
+                    person = scan.next(); scan.nextLine();
+
+                    personNum = findPerson(person, charList);
                     if (personNum == -1) {
                         correctPerson = checkForNewCharacter(person, charList);
                     } else {
@@ -378,13 +432,13 @@ public class StardewValley {
                 charList.get(personNum).setBirthday(date);
                 break;
             //Check if there are any birthdays today?
-            case 8:
+            case 9:
                 System.out.print("What is the date? ");
                 date = scan.nextLine();
                 boolean birthdayFound = false;
-                for (Villager person8 : charList) {
-                    if ((person8.getBirthday().equals(date)) && !birthdayFound) {
-                        System.out.println(person8.getName() + "'s birthday is today, " + date + ".");
+                for (Villager person9 : charList) {
+                    if ((person9.getBirthday().equals(date)) && !birthdayFound) {
+                        System.out.println(person9.getName() + "'s birthday is today, " + date + ".");
                         birthdayFound = true;
                     }
                 }
@@ -395,12 +449,12 @@ public class StardewValley {
                 scan.nextLine();
                 break;
             //Add any miscellaneous information?
-            case 9:
+            case 10:
                 System.out.println("What information?");
                 miscInfo.add(scan.nextLine());
                 break;
             //View all miscellaneous information?
-            case 10:
+            case 11:
                 System.out.println("Keyword?");
                 String keyword = scan.nextLine();
                 for (String info : miscInfo) {
@@ -413,7 +467,7 @@ public class StardewValley {
                 scan.nextLine();
                 break;
             //Save and quit?
-            case 11:
+            case 12:
                 writeToFile(charList);
                 scan.close();
                 System.exit(0);
@@ -467,11 +521,12 @@ public class StardewValley {
         System.out.println("4) See all information about a certain gift?");
         System.out.println("5) See all information about a certain person?");
         System.out.println("6) Check if a person is single?");
-        System.out.println("7) Set a person's birthday?");
-        System.out.println("8) Check if there are any birthdays today?");
-        System.out.println("9) Add any miscellaneous information");
-        System.out.println("10) View all miscellaneous information?");
-        System.out.println("11) Save and quit?");
+        System.out.println("7) Set whether or not a person is single?");
+        System.out.println("8) Set a person's birthday?");
+        System.out.println("9) Check if there are any birthdays today?");
+        System.out.println("10) Add any miscellaneous information");
+        System.out.println("11) View all miscellaneous information?");
+        System.out.println("12) Save and quit?");
     }
 
     /**

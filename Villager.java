@@ -161,4 +161,14 @@ public class Villager
    {
       dislike.add(gift);
    }
+   
+   /**
+    * setSingleness - Set a Villager's single boolean
+    * 
+    * @param single What the Villager's single value should be set to
+    */
+   public void setSingleness(boolean single)
+   {
+       this.single = single;
+   }
 }
